@@ -3,15 +3,21 @@ import path from 'path';
 import nunjucks from 'think-view-nunjucks';
 import fileSession from 'think-session-file';
 import fileCache from 'think-cache-file';
+const { Console, File, DateFile } = require('think-logger3');
+const isDev = think.env === 'development' || think.env === 'vercel';
+const isVercel = think.env === 'vercel';
 
-export const cache  = {
+export const cache = {
   type: 'file',
   common: {
     timeout: 24 * 60 * 60 * 1000 // millisecond
   },
   file: {
     handle: fileCache,
-    cachePath: path.join(think.ROOT_PATH, 'runtime/cache'), // absoulte path is necessarily required
+    // absoulte path is necessarily required
+    cachePath: isVercel
+      ? '/tmp/cache'
+      : path.join(think.ROOT_PATH, 'runtime/cache'),
     pathDepth: 1,
     gcInterval: 24 * 60 * 60 * 1000 // gc interval
   }
@@ -28,7 +34,9 @@ export const session = {
   },
   file: {
     handle: fileSession,
-    sessionPath: path.join(think.ROOT_PATH, 'runtime/session')
+    sessionPath: isVercel
+    ? '/tmp/session'
+    :  path.join(think.ROOT_PATH, 'runtime/session')
   }
 };
 
@@ -41,5 +49,27 @@ export const view = {
   },
   nunjucks: {
     handle: nunjucks
+  }
+};
+
+export const logger = {
+  type: isDev ? 'console' : 'dateFile',
+  console: {
+    handle: Console
+  },
+  file: {
+    handle: File,
+    backups: 10, // max chunk number
+    absolute: true,
+    maxLogSize: 50 * 1024, // 50M
+    filename: path.join(think.ROOT_PATH, 'logs/app.log')
+  },
+  dateFile: {
+    handle: DateFile,
+    level: 'ALL',
+    absolute: true,
+    pattern: '-yyyy-MM-dd',
+    alwaysIncludePattern: true,
+    filename: path.join(think.ROOT_PATH, 'logs/app.log')
   }
 };

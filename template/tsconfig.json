@@ -5,14 +5,21 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "esModuleInterop": true,
     "outDir": "app",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
+    "declaration": false,
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ]
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "./env.d.ts"
   ],
   "exclude": [
     "node_modules",
