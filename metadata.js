@@ -43,7 +43,8 @@ module.exports = {
       ['config.js', 'config.js'],
       ['build.mjs', 'build.mjs'],
       ['.vscode', '.vscode'],
-      ['.prettierrc.cjs', '.prettierrc.cjs']
+      ['.prettierrc.cjs', '.prettierrc.cjs'],
+      ['.npmrc','.npmrc']
     ],
     multiModule: [
       ['src/bootstrap', 'src/common/bootstrap'],
@@ -74,7 +75,8 @@ module.exports = {
       ['config.js', 'config.js'],
       ['build.mjs', 'build.mjs'],
       ['.vscode', '.vscode'],
-      ['.prettierrc.cjs', '.prettierrc.cjs']
+      ['.prettierrc.cjs', '.prettierrc.cjs'],
+      ['.npmrc','.npmrc']
     ]
   },
   controller: {
