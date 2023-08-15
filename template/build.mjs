@@ -19,6 +19,7 @@ function build() {
   });
 
   // 复制
+  fs.cpSync('./pack', './dist/pack', { recursive: true });
   fs.cpSync('./app', './dist/app', { recursive: true });
   fs.cpSync('./package.json', './dist/package.json', { recursive: true });
   fs.cpSync('./config.js', './dist/config.js', { recursive: true });
