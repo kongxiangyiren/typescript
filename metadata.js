@@ -44,7 +44,8 @@ module.exports = {
       ['build.mjs', 'build.mjs'],
       ['.vscode', '.vscode'],
       ['.prettierrc.cjs', '.prettierrc.cjs'],
-      ['.npmrc','.npmrc']
+      ['.npmrc', '.npmrc'],
+      ['pack', 'pack']
     ],
     multiModule: [
       ['src/bootstrap', 'src/common/bootstrap'],
@@ -76,7 +77,8 @@ module.exports = {
       ['build.mjs', 'build.mjs'],
       ['.vscode', '.vscode'],
       ['.prettierrc.cjs', '.prettierrc.cjs'],
-      ['.npmrc','.npmrc']
+      ['.npmrc', '.npmrc'],
+      ['pack','pack']
     ]
   },
   controller: {
@@ -93,6 +95,9 @@ module.exports = {
       ['src/logic/index.ts', 'src/[moduleName]/logic/[action].ts']
     ]
   },
+  "skipCompile": [
+    "pack/**/*.tgz"
+  ],
   model: [['src/model/index.ts', 'src/[moduleName]/model/[action].ts']],
   service: [['src/service/index.ts', 'src/[moduleName]/service/[action].ts']],
   middleware: [
