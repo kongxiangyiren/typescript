@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "regions": ["hkg1"],
+  "installCommand" :"yarn install",
   "builds": [
     {
       "src": "vercel.js",
