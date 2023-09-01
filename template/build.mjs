@@ -14,7 +14,7 @@ function build() {
   }
 
   // 编译
-  execSync('npm run format && tslint "src/**/*.ts" --fix && tsc', {
+  execSync('npm run format && npx tslint "src/**/*.ts" --fix && npx tsc', {
     stdio: 'inherit'
   });
 
