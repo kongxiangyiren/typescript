@@ -12,7 +12,7 @@ instance.run();
 
 function conf(vax, fa) {
   for (var key in vax) {
-    if (typeof vax[key] === 'object') {
+    if (typeof vax[key] === 'object' && !Array.isArray(vax[key])) {
       if (fa !== undefined) {
         conf(vax[key], fa + '.' + key);
       } else {
