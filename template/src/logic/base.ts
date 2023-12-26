@@ -1,5 +1,5 @@
 import validator from 'validator';
-validator.toString = function (input: any) {
+validator.toString =  (input: any) => {
   return String(input);
 };
 export default class extends think.Logic {
